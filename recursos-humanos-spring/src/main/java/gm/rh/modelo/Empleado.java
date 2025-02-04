@@ -21,6 +21,7 @@ public class Empleado {
     String nombre;
     String departamento;
     Double sueldo;
+    Boolean estado;
 
     public Integer getIdEmpleado() {
         return idEmpleado;

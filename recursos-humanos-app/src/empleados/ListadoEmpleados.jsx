@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { use } from 'react';
+import { NumberFormatBase, NumericFormat } from 'react-number-format';
 
 
 
@@ -8,14 +9,15 @@ import { use } from 'react';
 export default function ListadoEmpleados() {
   const urlBase ='http://localhost:8081/rh-app/empleados';
   const [empleados,setempleados] = useState([]);
-  
+
   useEffect(()=>{
     cargarEmpleados();
   },[]);
-  
+
   const cargarEmpleados = async () => {
     const result = await axios.get(urlBase);
     console.log(result.data);
+    setempleados(result.data);
   };
 
   return (
@@ -33,20 +35,23 @@ export default function ListadoEmpleados() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+  {
+    // iteramos el arreglo de emplados
+    empleados.map((empleado,indice)=>(
+      <tr key={indice}>
+      <th scope="row">{empleado.idEmpleado}</th>
+      <td>{empleado.nombre}</td>
+      <td>{empleado.departamento}</td>
+      <td>
+        <NumericFormat value={empleado.sueldo}
+        displayType={'text'}
+        thousandSeparator=',' prefix='$'
+        decimalScale={2} fixedDecimalScale/>
+        </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Mark2</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-   
-    
+    ))
+}
+
   </tbody>
 </table>
     </div>

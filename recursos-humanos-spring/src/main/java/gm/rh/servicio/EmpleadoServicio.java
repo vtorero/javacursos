@@ -3,6 +3,8 @@ package gm.rh.servicio;
 import gm.rh.modelo.Empleado;
 import gm.rh.repositorio.EmpleadoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,13 +15,15 @@ public class EmpleadoServicio implements IEmpleadoServicio{
     @Autowired
     private EmpleadoRepositorio empleadoRepositorio;
     @Override
+
     public List<Empleado> listarEmpleados() {
+        Pageable pageable = PageRequest.of(0,2);
         return empleadoRepositorio.findAll();
     }
 
     @Override
     public Empleado buscarEmpleadoPorId(Integer idEmpleado) {
-       Empleado empleado= empleadoRepositorio.findById(idEmpleado).orElse(null);
+        Empleado empleado= empleadoRepositorio.findById(idEmpleado).orElse(null);
         return empleado;
     }
 

@@ -34,7 +34,7 @@ export const EditarEmpleado = () => {
   const onSubmit = async (e) =>{
     e.preventDefault();
     
-    await axios.put(`${urlBase}/${id}`,empleado);
+    await axios.put(`${urlBase}/${}`,empleado);
     navegacion('/');
 
   }

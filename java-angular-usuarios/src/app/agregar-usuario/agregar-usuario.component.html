@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="container text-center" style="margin: 30px;"><h3>Agregar usuario</h3></div>
+<form (ngSubmit)="enviar()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp"
+       required="true" [(ngModel)]="usuario.firstname">
+
+    </div>
+    <div class="mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" id="lastname" name="lastname"
+      [(ngModel)]="usuario.lastname">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email" [(ngModel)]="usuario.email">
+      </div>
+    <button type="submit" class="btn btn-warning btn-sm me-3">Agregar</button>
+    <a href="/" class="btn btn-danger btn-sm">Regresar</a>
+  </form>
+</div>

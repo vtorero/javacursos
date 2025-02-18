@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="container text-center" style="margin: 30px;">
+    <h3>Sistema de usuarios</h3>
+   </div>
+   <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Correo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row">{{usuario.id}}</th>
+        <td>{{usuario.firstname}}</td>
+        <td>{{usuario.lastname}}</td>
+        <td>{{usuario.email}}</td>
+        <td class="text-center">
+          <button (click)="editarUsuario(usuario.id)" class="btn btn-warning btn-sm me-3">Editar</button>
+          <button (click)="eliminarUsuario(usuario.id)" class="btn btn-danger btn-sm me-3">Eliminar</button>
+        
+        </td>
+      </tr>
+  
+
+    </tbody>
+  </table>
+</div>
